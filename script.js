@@ -11,21 +11,23 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-let currentCat = "kendaraan";
 
-function changeCategory(cat) {
-    currentCat = cat;
-    document.getElementById('cat-title').innerText = `Whitelist: ${cat.toUpperCase()}`;
-    db.ref('whitelist/' + cat).on('value', (snap) => {
+function showDashboard() {
+    document.getElementById('home-screen').classList.add('hidden');
+    document.getElementById('admin-screen').classList.remove('hidden');
+    loadData();
+}
+
+function loadData() {
+    db.ref('whitelist/kendaraan').on('value', (snap) => {
         let list = document.getElementById('list');
         list.innerHTML = "";
         snap.forEach((child) => {
-            list.innerHTML += `
-                <tr class="table-row border-b border-white/5">
-                    <td class="p-4 font-mono text-blue-300">${child.key}</td>
-                    <td class="p-4">${child.val().nama}</td>
-                    <td class="p-4"><button onclick="del('${child.key}')" class="btn-delete">Hapus</button></td>
-                </tr>`;
+            list.innerHTML += `<tr class="border-b border-white/10">
+                <td class="p-4">${child.key}</td>
+                <td class="p-4">${child.val().nama}</td>
+                <td class="p-4"><button onclick="del('${child.key}')" class="text-red-500">Hapus</button></td>
+            </tr>`;
         });
     });
 }
@@ -33,10 +35,9 @@ function changeCategory(cat) {
 function addData() {
     let id = document.getElementById('id-in').value;
     let name = document.getElementById('name-in').value;
-    if(!id || !name) return alert("Isi ID dan Nama!");
-    db.ref('whitelist/' + currentCat + '/' + id).set({ nama: name });
+    db.ref('whitelist/kendaraan/' + id).set({ nama: name });
 }
 
 function del(id) {
-    if(confirm("Yakin hapus?")) db.ref('whitelist/' + currentCat + '/' + id).remove();
+    db.ref('whitelist/kendaraan/' + id).remove();
 }
