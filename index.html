@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Panel Whitelist Pro</title>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <button onclick="changeCategory('kendaraan')">🚗 Kendaraan</button>
+        <button onclick="changeCategory('map')">🗺️ Map</button>
+        <button onclick="changeCategory('system')">⚙️ System</button>
+        <button onclick="changeCategory('lisensi')">💎 Lisensi Resmi</button>
+    </div>
+    
+    <div class="main-content">
+        <h1 id="category-title">Pilih Kategori</h1>
+        <div class="input-group">
+            <input type="text" id="creatorId" placeholder="Masukkan ID Kreator/Group">
+            <input type="text" id="creatorName" placeholder="Nama Pemilik/Group">
+            <button onclick="saveData()">Tambah ke Whitelist</button>
+        </div>
+        <table>
+            <thead><tr><th>ID Kreator</th><th>Nama</th><th>Aksi</th></tr></thead>
+            <tbody id="table-body"></tbody>
+        </table>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
