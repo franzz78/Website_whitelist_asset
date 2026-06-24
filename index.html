@@ -2,29 +2,37 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Whitelist Digital</title>
     <style>
         .glass-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(15px); border-radius: 24px; border: 1px solid rgba(255, 255, 255, 0.1); }
     </style>
 </head>
-<body class="bg-slate-900 text-white min-h-screen flex items-center justify-center">
+<body class="bg-slate-900 text-white min-h-screen flex items-center justify-center p-4">
 
-    <div class="glass-card p-10 w-full max-w-md text-center shadow-2xl">
+    <div id="home-screen" class="glass-card p-10 w-full max-w-md text-center shadow-2xl">
         <h1 class="text-4xl font-bold text-white mb-2 tracking-tight">WHITELIST DIGITAL</h1>
-        
         <p class="text-slate-400 text-sm mb-10 font-medium">Create by nathanael_0918</p>
-
         <div class="space-y-4">
-            <button onclick="window.location.href='admin.html'" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-4 rounded-xl transition duration-300">
-                WHITELIST
-            </button>
-            <button onclick="window.location.href='pengelola.html'" class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 rounded-xl transition duration-300">
-                PENGELOLA
-            </button>
+            <button onclick="showDashboard()" class="w-full bg-red-700 hover:bg-red-800 text-white font-bold py-4 rounded-xl transition">WHITELIST</button>
+            <button class="w-full bg-slate-700 hover:bg-slate-600 text-white font-bold py-4 rounded-xl transition">PENGELOLA</button>
         </div>
     </div>
 
+    <div id="admin-screen" class="hidden w-full max-w-4xl glass-card p-8">
+        <h2 class="text-2xl font-bold mb-6">Dashboard Whitelist</h2>
+        <div class="flex gap-4 mb-6">
+            <input id="id-in" class="bg-slate-800 p-3 rounded-lg w-1/3 border border-white/10" placeholder="ID Kreator">
+            <input id="name-in" class="bg-slate-800 p-3 rounded-lg w-1/3 border border-white/10" placeholder="Nama">
+            <button onclick="addData()" class="bg-blue-600 px-6 rounded-lg font-bold">Tambah</button>
+        </div>
+        <table class="w-full">
+            <tbody id="list"></tbody>
+        </table>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
