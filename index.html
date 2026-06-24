@@ -2,31 +2,32 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whitelist Admin Portal</title>
     <link rel="stylesheet" href="style.css">
-    <title>Panel Whitelist Pro</title>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 </head>
 <body>
     <div class="sidebar">
-        <h2>Admin Panel</h2>
-        <button onclick="changeCategory('kendaraan')">🚗 Kendaraan</button>
-        <button onclick="changeCategory('map')">🗺️ Map</button>
-        <button onclick="changeCategory('system')">⚙️ System</button>
-        <button onclick="changeCategory('lisensi')">💎 Lisensi Resmi</button>
+        <h2>Dashboard</h2>
+        <button onclick="changeCategory('kendaraan')">Kendaraan</button>
+        <button onclick="changeCategory('map')">Map</button>
+        <button onclick="changeCategory('system')">System</button>
+        <button onclick="changeCategory('lisensi')">Lisensi Resmi</button>
     </div>
-    
-    <div class="main-content">
-        <h1 id="category-title">Pilih Kategori</h1>
-        <div class="input-group">
-            <input type="text" id="creatorId" placeholder="Masukkan ID Kreator/Group">
-            <input type="text" id="creatorName" placeholder="Nama Pemilik/Group">
-            <button onclick="saveData()">Tambah ke Whitelist</button>
+    <div class="main">
+        <h1 id="cat-title">Pilih Kategori</h1>
+        <div class="input-box">
+            <input type="text" id="id-in" placeholder="Roblox Creator ID">
+            <input type="text" id="name-in" placeholder="Nama/Grup">
+            <button onclick="addData()">Tambah</button>
         </div>
         <table>
-            <thead><tr><th>ID Kreator</th><th>Nama</th><th>Aksi</th></tr></thead>
-            <tbody id="table-body"></tbody>
+            <thead><tr><th>ID</th><th>Nama</th><th>Aksi</th></tr></thead>
+            <tbody id="list"></tbody>
         </table>
     </div>
     <script src="script.js"></script>
 </body>
 </html>
-
