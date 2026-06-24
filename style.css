@@ -1,0 +1,9 @@
+body { margin: 0; display: flex; background: #0f172a; color: white; font-family: 'Segoe UI', sans-serif; }
+.sidebar { width: 260px; background: #1e293b; height: 100vh; padding: 20px; }
+.main-content { flex: 1; padding: 40px; }
+button { padding: 10px 20px; cursor: pointer; border: none; border-radius: 5px; background: #3b82f6; color: white; margin: 5px; }
+table { width: 100%; border-collapse: collapse; margin-top: 20px; background: #1e293b; }
+th, td { padding: 12px; border: 1px solid #334155; text-align: left; }
+.input-group { margin-bottom: 20px; }
+input { padding: 10px; border-radius: 5px; border: none; width: 200px; }
+
